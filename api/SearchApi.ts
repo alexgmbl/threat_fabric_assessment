@@ -8,4 +8,10 @@ export class SearchApi {
       params: { q: authorName }
     });
   }
+
+  async searchBooks(query: string): Promise<APIResponse> {
+    return this.request.get('/search.json', {
+      params: { q: query }
+    });
+  }
 }
