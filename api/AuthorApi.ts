@@ -1,15 +1,9 @@
-import { APIRequestContext } from '@playwright/test';
-import { OpenLibraryApiClient } from './OpenLibraryApiClient';
-import { OpenLibraryAuthorResponse } from './types';
+import { APIRequestContext, APIResponse } from '@playwright/test';
 
 export class AuthorApi {
-  private readonly client: OpenLibraryApiClient;
+  constructor(private readonly request: APIRequestContext) {}
 
-  constructor(request: APIRequestContext) {
-    this.client = new OpenLibraryApiClient(request);
-  }
-
-  async getAuthorDetails(authorKey: string): Promise<OpenLibraryAuthorResponse> {
-    return this.client.getAuthorByKey(authorKey);
+  async getAuthorDetails(authorKey: string): Promise<APIResponse> {
+    return this.request.get(`/authors/${authorKey}.json`);
   }
 }

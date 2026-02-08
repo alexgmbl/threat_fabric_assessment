@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "openlibrary-test-framework",
   "version": "1.0.0",
   "private": true,
@@ -11,7 +12,8 @@
     "report": "playwright show-report"
   },
   "devDependencies": {
-    "@playwright/test": "^1.51.0",
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.2.2",
     "typescript": "^5.8.2"
   }
 }

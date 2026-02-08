@@ -25,28 +25,8 @@ export class OpenLibraryApiClient {
     return this.parseJsonOrThrow<OpenLibrarySearchResponse>(response, '/search.json');
   }
 
-  async searchByAuthor(author: string, page = 1): Promise<OpenLibrarySearchResponse> {
-    const response = await this.request.get('/search.json', {
-      params: { author, page }
-    });
-
-    return this.parseJsonOrThrow<OpenLibrarySearchResponse>(response, '/search.json');
-  }
-
-  async searchByTitleAndAuthor(title: string, author: string, page = 1): Promise<OpenLibrarySearchResponse> {
-    const response = await this.request.get('/search.json', {
-      params: {
-        title,
-        author,
-        page
-      }
-    });
-
-    return this.parseJsonOrThrow<OpenLibrarySearchResponse>(response, '/search.json');
-  }
-
   async getAuthorByKey(authorKey: string): Promise<OpenLibraryAuthorResponse> {
-    const normalizedKey = authorKey.replace(/^\/authors\//, '').replace(/^\//, '');
+    const normalizedKey = authorKey.replace(/^\//, '');
     const path = `/authors/${normalizedKey}.json`;
     const response = await this.request.get(path);
 
