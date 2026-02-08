@@ -17,22 +17,11 @@ This is a starter Playwright framework for testing https://openlibrary.org with:
 │  └─ ui/
 ├─ pages/
 ├─ api/
-│  ├─ OpenLibraryApiClient.ts
-│  ├─ SearchApi.ts
-│  ├─ AuthorApi.ts
-│  └─ types.ts
 ├─ test-data/
 ├─ playwright.config.ts
 ├─ package.json
 └─ README.md
 ```
-
-## API Client
-
-`OpenLibraryApiClient` provides reusable typed methods with centralized error handling:
-
-- `search(query, page?)` -> `GET /search.json`
-- `getAuthorByKey(authorKey)` -> `GET /authors/{authorKey}.json`
 
 ## Getting Started
 

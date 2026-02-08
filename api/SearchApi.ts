@@ -1,15 +1,11 @@
-import { APIRequestContext } from '@playwright/test';
-import { OpenLibraryApiClient } from './OpenLibraryApiClient';
-import { OpenLibrarySearchResponse } from './types';
+import { APIRequestContext, APIResponse } from '@playwright/test';
 
 export class SearchApi {
-  private readonly client: OpenLibraryApiClient;
+  constructor(private readonly request: APIRequestContext) {}
 
-  constructor(request: APIRequestContext) {
-    this.client = new OpenLibraryApiClient(request);
-  }
-
-  async search(query: string, page = 1): Promise<OpenLibrarySearchResponse> {
-    return this.client.search(query, page);
+  async searchByAuthor(authorName: string): Promise<APIResponse> {
+    return this.request.get('/search/authors.json', {
+      params: { q: authorName }
+    });
   }
 }
