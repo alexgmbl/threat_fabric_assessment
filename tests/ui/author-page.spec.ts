@@ -8,14 +8,11 @@ test('user can search and open an author page', async ({ page }) => {
   const resultsPage = new ResultsPage(page);
   const authorPage = new AuthorPage(page);
 
-  await searchPage.gotoHome();
+  await searchPage.goto();
   await searchPage.searchByAuthor('J. R. R. Tolkien');
 
-  const resultsCount = await resultsPage.getResultsCount();
-  expect(resultsCount).toBeGreaterThan(0);
+  await expect(resultsPage.resultRows.first()).toBeVisible();
+  await resultsPage.openAuthor('Tolkien');
 
-  await resultsPage.openAuthorProfile('Tolkien');
-
-  const authorName = await authorPage.getAuthorName();
-  expect(authorName.length).toBeGreaterThan(0);
+  await expect(authorPage.authorNameHeading).toBeVisible();
 });
