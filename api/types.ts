@@ -1,8 +1,8 @@
 export interface OpenLibrarySearchDoc {
   key: string;
-  title?: string;
+  name?: string;
   author_name?: string[];
-  author_key?: string[];
+  title?: string;
   first_publish_year?: number;
 }
 
@@ -13,14 +13,6 @@ export interface OpenLibrarySearchResponse {
   docs: OpenLibrarySearchDoc[];
 }
 
-export interface OpenLibraryAuthorLink {
-  title?: string;
-  url: string;
-  type?: {
-    key: string;
-  };
-}
-
 export interface OpenLibraryAuthorResponse {
   key: string;
   name: string;
@@ -29,5 +21,4 @@ export interface OpenLibraryAuthorResponse {
   death_date?: string;
   bio?: string | { type: string; value: string };
   alternate_names?: string[];
-  links?: OpenLibraryAuthorLink[];
 }
