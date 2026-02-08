@@ -1,12 +1,17 @@
 import { test, expect } from '@playwright/test';
 import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, resolve } from 'path';
+import { AuthorApi } from '../../api/AuthorApi.js'; 
 import path from 'path';
-import { AuthorApi } from '../../api/AuthorApi';
 
 type AuthorData = { name: string; key: string };
 
-const authorsPath = path.resolve(__dirname, '../../test-data/authors.json');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const authorsPath = resolve(__dirname, '../../test-data/authors.json');
 const authors: AuthorData[] = JSON.parse(readFileSync(authorsPath, 'utf-8'));
+
 
 test.describe('Author Details API', () => {
   for (const author of authors) {

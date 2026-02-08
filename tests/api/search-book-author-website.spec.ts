@@ -3,6 +3,11 @@ import { readFileSync } from 'fs';
 import path from 'path';
 import { SearchApi } from '../../api/SearchApi';
 import { AuthorApi } from '../../api/AuthorApi';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 type BookAuthorCase = {
   title: string;
@@ -14,24 +19,26 @@ const cases: BookAuthorCase[] = JSON.parse(readFileSync(testDataPath, 'utf-8'));
 
 test.describe('Open Library search to author website validation', () => {
   for (const scenario of cases) {
-    test(`searches by title and author, then validates author website URL: ${scenario.title} / ${scenario.author}`, async ({ request }) => {
-      const searchApi = new SearchApi(request);
-      const authorApi = new AuthorApi(request);
+   // ...existing code...
+test(`searches by title and author, then validates author website URL: ${scenario.title} / ${scenario.author}`, async ({ request }) => {
+  const searchApi = new SearchApi(request);
+  const authorApi = new AuthorApi(request);
 
-      const searchResponse = await searchApi.searchByTitleAndAuthor(scenario.title, scenario.author);
-      expect(searchResponse.docs.length).toBeGreaterThan(0);
+  const searchResponse = await searchApi.searchByAuthor(`${scenario.title} ${scenario.author}`);
+  const searchData = await searchResponse.json();
+  expect(searchData.docs.length).toBeGreaterThan(0);
 
-      const firstDoc = searchResponse.docs[0];
-      const firstAuthorKey = firstDoc.author_key?.[0];
-      expect(firstAuthorKey, 'Expected first search result to include author_key').toBeTruthy();
+  const firstDoc = searchData.docs[0];
+  const firstAuthorKey = firstDoc.author_key?.[0];
+  expect(firstAuthorKey, 'Expected first search result to include author_key').toBeTruthy();
 
-      const authorDetails = await authorApi.getAuthorDetails(firstAuthorKey as string);
+  const authorDetails = await authorApi.getAuthorDetails(firstAuthorKey as string);
+  const authorData = await authorDetails.json();
+  expect(authorData.links?.length, 'Expected author details to include at least one website link').toBeGreaterThan(0);
 
-      expect(authorDetails.links?.length, 'Expected author details to include at least one website link').toBeGreaterThan(0);
-
-      const firstWebsiteUrl = authorDetails.links?.[0].url;
-      expect(firstWebsiteUrl, 'Expected first author link URL to exist').toBeTruthy();
-      expect(firstWebsiteUrl).toMatch(/^https?:\/\//i);
+  const firstWebsiteUrl = authorData.links?.[0].url;
+  expect(firstWebsiteUrl, 'Expected first author link URL to exist').toBeTruthy();
+  expect(firstWebsiteUrl).toMatch(/^https?:\/\//i);
 
       const parsedUrl = new URL(firstWebsiteUrl as string);
       expect(parsedUrl.hostname.length).toBeGreaterThan(0);
