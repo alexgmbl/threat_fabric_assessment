@@ -1,0 +1,40 @@
+import { test, expect } from '@playwright/test';
+import { readFileSync } from 'fs';
+import path from 'path';
+import { SearchApi } from '../../api/SearchApi';
+import { AuthorApi } from '../../api/AuthorApi';
+
+type BookAuthorCase = {
+  title: string;
+  author: string;
+};
+
+const testDataPath = path.resolve(__dirname, '../../test-data/book-search-authors.json');
+const cases: BookAuthorCase[] = JSON.parse(readFileSync(testDataPath, 'utf-8'));
+
+test.describe('Open Library search to author website validation', () => {
+  for (const scenario of cases) {
+    test(`searches by title and author, then validates author website URL: ${scenario.title} / ${scenario.author}`, async ({ request }) => {
+      const searchApi = new SearchApi(request);
+      const authorApi = new AuthorApi(request);
+
+      const searchResponse = await searchApi.searchByTitleAndAuthor(scenario.title, scenario.author);
+      expect(searchResponse.docs.length).toBeGreaterThan(0);
+
+      const firstDoc = searchResponse.docs[0];
+      const firstAuthorKey = firstDoc.author_key?.[0];
+      expect(firstAuthorKey, 'Expected first search result to include author_key').toBeTruthy();
+
+      const authorDetails = await authorApi.getAuthorDetails(firstAuthorKey as string);
+
+      expect(authorDetails.links?.length, 'Expected author details to include at least one website link').toBeGreaterThan(0);
+
+      const firstWebsiteUrl = authorDetails.links?.[0].url;
+      expect(firstWebsiteUrl, 'Expected first author link URL to exist').toBeTruthy();
+      expect(firstWebsiteUrl).toMatch(/^https?:\/\//i);
+
+      const parsedUrl = new URL(firstWebsiteUrl as string);
+      expect(parsedUrl.hostname.length).toBeGreaterThan(0);
+    });
+  }
+});
