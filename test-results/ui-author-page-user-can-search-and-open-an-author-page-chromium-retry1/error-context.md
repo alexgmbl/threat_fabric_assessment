@@ -1,0 +1,978 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic:
+    - generic:
+      - iframe
+  - generic [ref=e4]:
+    - link "Internet Archive logo" [ref=e5] [cursor=pointer]:
+      - /url: https://archive.org
+      - img "Internet Archive logo" [ref=e6]
+    - link "Donate" [ref=e7] [cursor=pointer]:
+      - /url: https://archive.org/donate/?platform=ol&origin=olwww-TopNavDonateButton
+      - text: Donate ♥
+    - group [ref=e9] [cursor=pointer]:
+      - generic "English (en) Change Website Language ▼" [ref=e10]:
+        - text: English (en)
+        - img "Change Website Language" [ref=e11]
+        - text: ▼
+  - banner [ref=e12]:
+    - generic [ref=e13]:
+      - link "Open Library logo" [ref=e14] [cursor=pointer]:
+        - /url: /
+        - img "Open Library logo" [ref=e16]
+      - link:
+        - /url: /?show_page_status=1
+        - text: Page Status
+    - list [ref=e17]:
+      - listitem [ref=e18]:
+        - link "My Books" [ref=e20] [cursor=pointer]:
+          - /url: /account/books
+      - listitem [ref=e21]:
+        - group [ref=e23]:
+          - generic "Browse Menu" [ref=e24] [cursor=pointer]:
+            - text: Browse
+            - generic [ref=e25]: Menu
+            - img [ref=e26]
+    - generic [ref=e28]:
+      - generic [ref=e29]:
+        - generic [ref=e31]:
+          - generic [ref=e32]: All
+          - combobox "Search by" [ref=e33] [cursor=pointer]:
+            - option "All" [selected]
+            - option "Title"
+            - option "Author"
+            - option "Text"
+            - option "Subject"
+            - option "Lists"
+            - option "Advanced"
+        - search [ref=e34]:
+          - textbox "Search" [ref=e35]
+          - button "Search submit" [ref=e36] [cursor=pointer]
+          - link "Search by barcode" [ref=e38] [cursor=pointer]:
+            - /url: /barcodescanner?returnTo=/isbn/$$$
+      - generic:
+        - list
+    - list [ref=e39]:
+      - listitem [ref=e40]:
+        - link "Log In" [ref=e41] [cursor=pointer]:
+          - /url: /account/login
+      - listitem [ref=e42]:
+        - link "Sign Up" [ref=e43] [cursor=pointer]:
+          - /url: /account/create
+    - group [ref=e45]:
+      - generic "additional options menu" [ref=e46] [cursor=pointer]:
+        - img "additional options menu" [ref=e47]
+  - main [ref=e48]:
+    - generic [ref=e49]:
+      - generic [ref=e50]:
+        - heading "Welcome to Open Library" [level=2] [ref=e52]
+        - generic [ref=e54]:
+          - button "Previous" [disabled] [ref=e55] [cursor=pointer]
+          - listbox [ref=e57]:
+            - option "Read Free Library Books Online Millions of books available through Controlled Digital Lending" [ref=e58]:
+              - link "Read Free Library Books Online Millions of books available through Controlled Digital Lending" [ref=e59] [cursor=pointer]:
+                - /url: /help/faq/borrow
+                - generic [ref=e60]:
+                  - paragraph [ref=e61]: Read Free Library Books Online
+                  - paragraph [ref=e62]: Millions of books available through Controlled Digital Lending
+            - option "Set a Yearly Reading Goal Learn how to set a yearly reading goal and track what you read" [ref=e63]:
+              - link "Set a Yearly Reading Goal Learn how to set a yearly reading goal and track what you read" [ref=e64] [cursor=pointer]:
+                - /url: /help/faq/yearly-reading-goals
+                - generic [ref=e65]:
+                  - paragraph [ref=e66]: Set a Yearly Reading Goal
+                  - paragraph [ref=e67]: Learn how to set a yearly reading goal and track what you read
+            - option "Keep Track of your Favorite Books Organize your Books using Lists & the Reading Log" [ref=e68]:
+              - link "Keep Track of your Favorite Books Organize your Books using Lists & the Reading Log" [ref=e69] [cursor=pointer]:
+                - /url: /help/faq/reading-log
+                - generic [ref=e70]:
+                  - paragraph [ref=e71]: Keep Track of your Favorite Books
+                  - paragraph [ref=e72]: Organize your Books using Lists & the Reading Log
+            - option [ref=e73]:
+              - link [ref=e74] [cursor=pointer]:
+                - /url: /explore
+                - generic [ref=e75]:
+                  - paragraph [ref=e76]: Try the virtual Library Explorer
+                  - paragraph [ref=e77]: Digital shelves organized like a physical library
+            - option [ref=e78]:
+              - link [ref=e79] [cursor=pointer]:
+                - /url: /search/inside
+                - generic [ref=e80]:
+                  - paragraph [ref=e81]: Try Fulltext Search
+                  - paragraph [ref=e82]: Find matching results within the text of millions of books
+            - option [ref=e83]:
+              - link [ref=e84] [cursor=pointer]:
+                - /url: /librarians
+                - generic [ref=e85]:
+                  - paragraph [ref=e86]: Be an Open Librarian
+                  - paragraph [ref=e87]: Dozens of ways you can help improve the library
+            - option [ref=e88]:
+              - link [ref=e89] [cursor=pointer]:
+                - /url: /volunteer
+                - generic [ref=e90]:
+                  - paragraph [ref=e91]: Volunteer at Open Library
+                  - paragraph [ref=e92]: Discover opportunities to improve the library
+            - option [ref=e93]:
+              - link [ref=e94] [cursor=pointer]:
+                - /url: https://forms.gle/enM9rGoPBGB89kd4A
+                - generic [ref=e95]:
+                  - paragraph [ref=e96]: Send us feedback
+                  - paragraph [ref=e97]: Your feedback will help us improve these cards
+          - button "Next" [ref=e98] [cursor=pointer]
+      - generic [ref=e100]:
+        - heading "Trending Books" [level=2] [ref=e102]:
+          - link "Trending Books" [ref=e103] [cursor=pointer]:
+            - /url: /search?q=trending_score_hourly_sum%3A%5B1+TO+%2A%5D+readinglog_count%3A%5B4+TO+%2A%5D+language%3Aeng+-subject%3A%22content_warning%3Acover%22+-subject%3A%22content_warning%3Acover%22&sort=trending
+        - generic [ref=e105]:
+          - button "Previous" [disabled] [ref=e106] [cursor=pointer]
+          - listbox [ref=e108]:
+            - option "Research Design Preview Only" [ref=e109]:
+              - link "Research Design" [ref=e111] [cursor=pointer]:
+                - /url: /books/OL26389558M
+                - img "Research Design" [ref=e112]
+              - link "Preview Only" [ref=e114] [cursor=pointer]:
+                - /url: "#bookPreview"
+            - option "Manifest Locate" [ref=e115]:
+              - link "Manifest" [ref=e117] [cursor=pointer]:
+                - /url: /books/OL38067146M
+                - img "Manifest" [ref=e118]
+              - link "Locate" [ref=e120] [cursor=pointer]:
+                - /url: /books/OL38067146M/-/borrow?action=locate
+            - option "Dream Master Checked Out" [ref=e121]:
+              - link "Dream Master" [ref=e123] [cursor=pointer]:
+                - /url: /books/OL11073578M
+                - img "Dream Master" [ref=e124]
+              - link "Checked Out" [ref=e126] [cursor=pointer]:
+                - /url: ""
+            - option "Crime and Punishment Locate" [ref=e127]:
+              - link "Crime and Punishment" [ref=e129] [cursor=pointer]:
+                - /url: /books/OL55900058M
+                - img "Crime and Punishment" [ref=e130]
+              - link "Locate" [ref=e132] [cursor=pointer]:
+                - /url: /books/OL55900058M/-/borrow?action=locate
+            - option "Twilight Preview Only" [ref=e133]:
+              - link "Twilight" [ref=e135] [cursor=pointer]:
+                - /url: /books/OL24644542M
+                - img "Twilight" [ref=e136]
+              - link "Preview Only" [ref=e138] [cursor=pointer]:
+                - /url: "#bookPreview"
+            - option "The Psychology of Money Locate" [ref=e139]:
+              - link "The Psychology of Money" [ref=e141] [cursor=pointer]:
+                - /url: /books/OL37301440M
+                - img "The Psychology of Money" [ref=e142]
+              - link "Locate" [ref=e144] [cursor=pointer]:
+                - /url: /books/OL37301440M/-/borrow?action=locate
+            - option [ref=e145]:
+              - link [ref=e147] [cursor=pointer]:
+                - /url: /books/OL34975464M
+                - img [ref=e148]
+              - link [ref=e150] [cursor=pointer]:
+                - /url: /books/OL34975464M/-/borrow?action=locate
+                - text: Locate
+            - option [ref=e151]:
+              - link [ref=e153] [cursor=pointer]:
+                - /url: /books/OL40217931M
+                - img [ref=e154]
+              - link [ref=e156] [cursor=pointer]:
+                - /url: /books/OL40217931M/-/borrow?action=read
+                - text: Read
+            - option [ref=e157]:
+              - link [ref=e159] [cursor=pointer]:
+                - /url: /books/OL37863121M
+                - img [ref=e160]
+              - link [ref=e162] [cursor=pointer]:
+                - /url: /borrow/ia/warpeace34tols_0?ref=ol
+                - text: Read
+            - option [ref=e163]:
+              - link [ref=e165] [cursor=pointer]:
+                - /url: /books/OL49640659M
+                - img [ref=e166]
+              - link [ref=e168] [cursor=pointer]:
+                - /url: "#bookPreview"
+                - text: Preview Only
+            - option [ref=e169]:
+              - link [ref=e171] [cursor=pointer]:
+                - /url: /books/OL24935072M
+                - img [ref=e172]
+              - link [ref=e174] [cursor=pointer]:
+                - /url: "#bookPreview"
+                - text: Preview Only
+            - option [ref=e175]:
+              - link [ref=e177] [cursor=pointer]:
+                - /url: /books/OL33899062M
+                - img [ref=e178]
+              - link [ref=e180] [cursor=pointer]:
+                - /url: /books/OL33899062M/-/borrow?action=locate
+                - text: Locate
+            - option [ref=e181]:
+              - link [ref=e183] [cursor=pointer]:
+                - /url: /books/OL47824566M
+                - img [ref=e184]
+              - link [ref=e186] [cursor=pointer]:
+                - /url: /borrow/ia/macbeththeacadem0000will?ref=ol
+                - text: Read
+            - option [ref=e187]:
+              - link [ref=e189] [cursor=pointer]:
+                - /url: /books/OL39806707M
+                - img [ref=e190]
+              - link [ref=e192] [cursor=pointer]:
+                - /url: /borrow/ia/candide0000volt_u0y4?ref=ol
+                - text: Read
+            - option [ref=e193]:
+              - link [ref=e195] [cursor=pointer]:
+                - /url: /books/OL25041663M
+                - img [ref=e196]
+              - link [ref=e198] [cursor=pointer]:
+                - /url: /books/OL25041663M/-/borrow?action=locate
+                - text: Locate
+            - option [ref=e199]:
+              - link [ref=e201] [cursor=pointer]:
+                - /url: /books/OL28458864M
+                - generic [ref=e203]: Finding Sky
+              - link [ref=e205] [cursor=pointer]:
+                - /url: /books/OL28458864M/-/borrow?action=locate
+                - text: Locate
+            - option [ref=e206]:
+              - link [ref=e208] [cursor=pointer]:
+                - /url: /books/OL34931629M
+                - img [ref=e209]
+              - link [ref=e211] [cursor=pointer]:
+                - /url: /books/OL34931629M/-/borrow?action=locate
+                - text: Locate
+            - option [ref=e212]:
+              - link [ref=e214] [cursor=pointer]:
+                - /url: /books/OL8242428M
+                - img [ref=e215]
+              - button [ref=e218] [cursor=pointer]: Join Waitlist
+            - option [ref=e219]:
+              - link [ref=e221] [cursor=pointer]:
+                - /url: /books/OL4429715M
+                - img [ref=e222]
+              - link [ref=e224] [cursor=pointer]:
+                - /url: /borrow/ia/geniuslocitoward0000norb?ref=ol
+                - text: Borrow
+            - option [ref=e225]:
+              - link [ref=e227] [cursor=pointer]:
+                - /url: /books/OL1558157M
+                - img [ref=e228]
+              - link [ref=e230] [cursor=pointer]:
+                - /url: /borrow/ia/roxaboxen0000unse?ref=ol
+                - text: Borrow
+          - button "Next" [ref=e231] [cursor=pointer]
+      - generic [ref=e233]:
+        - heading "Classic Books" [level=2] [ref=e235]:
+          - link "Classic Books" [ref=e236] [cursor=pointer]:
+            - /url: /search?q=ddc%3A8%2A+first_publish_year%3A%5B%2A+TO+1950%5D+publish_year%3A%5B2000+TO+%2A%5D+NOT+public_scan_b%3Afalse+language%3Aeng+-subject%3A%22content_warning%3Acover%22+-subject%3A%22content_warning%3Acover%22&sort=trending
+        - generic [ref=e238]:
+          - button "Previous" [disabled] [ref=e239] [cursor=pointer]
+          - listbox [ref=e241]:
+            - option "The Kama Sutra of Vatsyayana Read" [ref=e242]:
+              - link "The Kama Sutra of Vatsyayana" [ref=e244] [cursor=pointer]:
+                - /url: /books/OL40217931M
+                - img "The Kama Sutra of Vatsyayana" [ref=e245]
+              - link "Read" [ref=e247] [cursor=pointer]:
+                - /url: /books/OL40217931M/-/borrow?action=read
+            - option "War And Peace Borrow" [ref=e248]:
+              - link "War And Peace" [ref=e250] [cursor=pointer]:
+                - /url: /books/OL47697033M
+                - img "War And Peace" [ref=e251]
+              - link "Borrow" [ref=e253] [cursor=pointer]:
+                - /url: /borrow/ia/warpeace0000lont?ref=ol
+            - option "Macbeth Read" [ref=e254]:
+              - link "Macbeth" [ref=e256] [cursor=pointer]:
+                - /url: /books/OL37044889M
+                - img "Macbeth" [ref=e257]
+              - link "Read" [ref=e259] [cursor=pointer]:
+                - /url: /books/OL37044889M/-/borrow?action=read
+            - option "Candide Read" [ref=e260]:
+              - link "Candide" [ref=e262] [cursor=pointer]:
+                - /url: /books/OL37044428M
+                - img "Candide" [ref=e263]
+              - link "Read" [ref=e265] [cursor=pointer]:
+                - /url: /books/OL37044428M/-/borrow?action=read
+            - option "Regency Buck Borrow" [ref=e266]:
+              - link "Regency Buck" [ref=e268] [cursor=pointer]:
+                - /url: /books/OL34420744M
+                - img "Regency Buck" [ref=e269]
+              - link "Borrow" [ref=e271] [cursor=pointer]:
+                - /url: /borrow/ia/regencybuck0000heye_y4e3?ref=ol
+            - option "A Midsummer Night’s Dream Read" [ref=e272]:
+              - link "A Midsummer Night’s Dream" [ref=e274] [cursor=pointer]:
+                - /url: /books/OL37044899M
+                - img "A Midsummer Night’s Dream" [ref=e275]
+              - link "Read" [ref=e277] [cursor=pointer]:
+                - /url: /books/OL37044899M/-/borrow?action=read
+            - option [ref=e278]:
+              - link [ref=e280] [cursor=pointer]:
+                - /url: /books/OL39469409M
+                - img [ref=e281]
+              - link [ref=e283] [cursor=pointer]:
+                - /url: /borrow/ia/siddharthaindian0000hess_r6n0?ref=ol
+                - text: Borrow
+            - option [ref=e284]:
+              - link [ref=e286] [cursor=pointer]:
+                - /url: /books/OL37044895M
+                - img [ref=e287]
+              - link [ref=e289] [cursor=pointer]:
+                - /url: /books/OL37044895M/-/borrow?action=read
+                - text: Read
+            - option [ref=e290]:
+              - link [ref=e292] [cursor=pointer]:
+                - /url: /books/OL26635449M
+                - img [ref=e293]
+              - link [ref=e295] [cursor=pointer]:
+                - /url: /books/OL26635449M/-/borrow?action=read
+                - generic [ref=e297]: Audiobook
+            - option [ref=e298]:
+              - link [ref=e300] [cursor=pointer]:
+                - /url: /books/OL43359404M
+                - img [ref=e301]
+              - link [ref=e303] [cursor=pointer]:
+                - /url: /borrow/ia/isbn_9781784043209?ref=ol
+                - text: Borrow
+            - option [ref=e304]:
+              - link [ref=e306] [cursor=pointer]:
+                - /url: /books/OL37800334M
+                - img [ref=e307]
+              - link [ref=e309] [cursor=pointer]:
+                - /url: /borrow/ia/dongwunongzhuang00orwe?ref=ol
+                - text: Borrow
+            - option [ref=e310]:
+              - link [ref=e312] [cursor=pointer]:
+                - /url: /books/OL37044701M
+                - img [ref=e313]
+              - link [ref=e315] [cursor=pointer]:
+                - /url: /books/OL37044701M/-/borrow?action=read
+                - text: Read
+            - option [ref=e316]:
+              - link [ref=e318] [cursor=pointer]:
+                - /url: /books/OL7916543M
+                - img [ref=e319]
+              - link [ref=e321] [cursor=pointer]:
+                - /url: ""
+                - text: Checked Out
+            - option [ref=e322]:
+              - link [ref=e324] [cursor=pointer]:
+                - /url: /books/OL51733815M
+                - img [ref=e325]
+              - link [ref=e327] [cursor=pointer]:
+                - /url: /books/OL51733815M/-/borrow?action=read
+                - text: Read
+            - option [ref=e328]:
+              - link [ref=e330] [cursor=pointer]:
+                - /url: /books/OL58393454M
+                - img [ref=e331]
+              - link [ref=e333] [cursor=pointer]:
+                - /url: /books/OL58393454M/-/borrow?action=read
+                - generic [ref=e335]: Audiobook
+            - option [ref=e336]:
+              - link [ref=e338] [cursor=pointer]:
+                - /url: /books/OL35716548M
+                - img [ref=e339]
+              - link [ref=e341] [cursor=pointer]:
+                - /url: /borrow/ia/adventuresoftoms0000twai_m1k4?ref=ol
+                - text: Borrow
+            - option [ref=e342]:
+              - link [ref=e344] [cursor=pointer]:
+                - /url: /books/OL32941311M
+                - img [ref=e345]
+              - link [ref=e347] [cursor=pointer]:
+                - /url: /books/OL32941311M/-/borrow?action=read
+                - text: Read
+            - option [ref=e348]:
+              - link [ref=e350] [cursor=pointer]:
+                - /url: /books/OL25709295M
+                - img [ref=e351]
+              - link [ref=e353] [cursor=pointer]:
+                - /url: /borrow/ia/a-tale-of-two-cities?ref=ol
+                - text: Read
+            - option [ref=e354]:
+              - link [ref=e356] [cursor=pointer]:
+                - /url: /books/OL13570329M
+                - img [ref=e357]
+              - link [ref=e359] [cursor=pointer]:
+                - /url: /borrow/ia/nineteeneightyfo0000orwe_k1u2?ref=ol
+                - text: Borrow
+            - option [ref=e360]:
+              - link [ref=e362] [cursor=pointer]:
+                - /url: /books/OL46950166M
+                - img [ref=e363]
+              - link [ref=e365] [cursor=pointer]:
+                - /url: /borrow/ia/anneofgreengable0000lucy_u5q7?ref=ol
+                - text: Read
+          - button "Next" [ref=e366] [cursor=pointer]
+      - generic [ref=e367]:
+        - heading "Books We Love" [level=2] [ref=e369]:
+          - link "Books We Love" [ref=e370] [cursor=pointer]:
+            - /url: https://archive.org/search.php?query=openlibrary_work%3A%28%2A%29+AND+%28collection%3A%28inlibrary%29+OR+%28%21collection%3A%28printdisabled%29%29%29+AND+%28lending___available_to_browse%3Atrue+OR+lending___available_to_borrow%3Atrue%29+AND++language%3Aeng+AND+openlibrary_subject%3Aopenlibrary_staff_picks+AND+%21collection%3A%28no-preview%29&sort=-lending___last_browse
+        - generic [ref=e372]:
+          - button "Previous" [disabled] [ref=e373] [cursor=pointer]
+          - listbox [ref=e375]:
+            - option "Forbidden knowledge by Roger Shattuck Borrow" [ref=e376]:
+              - link "Forbidden knowledge by Roger Shattuck" [ref=e378] [cursor=pointer]:
+                - /url: /books/OL971651M
+                - img "Forbidden knowledge by Roger Shattuck" [ref=e379]
+              - link "Borrow" [ref=e381] [cursor=pointer]:
+                - /url: /borrow/ia/forbiddenknowled00shat?ref=ol
+            - option "Málaga Burning by Gamel Woolsey Borrow" [ref=e382]:
+              - link "Málaga Burning by Gamel Woolsey" [ref=e384] [cursor=pointer]:
+                - /url: /books/OL1016954M
+                - img "Málaga Burning by Gamel Woolsey" [ref=e385]
+              - link "Borrow" [ref=e387] [cursor=pointer]:
+                - /url: /borrow/ia/malagaburningame00wool?ref=ol
+            - option "The Hired Girl by Laura Amy Schlitz Borrow" [ref=e388]:
+              - link "The Hired Girl by Laura Amy Schlitz" [ref=e390] [cursor=pointer]:
+                - /url: /books/OL27187262M
+                - img "The Hired Girl by Laura Amy Schlitz" [ref=e391]
+              - link "Borrow" [ref=e393] [cursor=pointer]:
+                - /url: /borrow/ia/hiredgirl0000schl?ref=ol
+            - option "Moby-Dick, or, The whale by Herman Melville Borrow" [ref=e394]:
+              - link "Moby-Dick, or, The whale by Herman Melville" [ref=e396] [cursor=pointer]:
+                - /url: /books/OL347357M
+                - img "Moby-Dick, or, The whale by Herman Melville" [ref=e397]
+              - link "Borrow" [ref=e399] [cursor=pointer]:
+                - /url: /borrow/ia/mobydickorwhal00melv?ref=ol
+            - option "Fear no evil by Anatoly Shcharansky Borrow" [ref=e400]:
+              - link "Fear no evil by Anatoly Shcharansky" [ref=e402] [cursor=pointer]:
+                - /url: /books/OL2407753M
+                - img "Fear no evil by Anatoly Shcharansky" [ref=e403]
+              - link "Borrow" [ref=e405] [cursor=pointer]:
+                - /url: /borrow/ia/fearnoevil00shch_2?ref=ol
+            - option "Wuthering Heights by Emily Brontë Borrow" [ref=e406]:
+              - link "Wuthering Heights by Emily Brontë" [ref=e408] [cursor=pointer]:
+                - /url: /books/OL35468283M
+                - img "Wuthering Heights by Emily Brontë" [ref=e409]
+              - link "Borrow" [ref=e411] [cursor=pointer]:
+                - /url: /borrow/ia/isbn_9780141196039?ref=ol
+            - option [ref=e412]:
+              - link [ref=e414] [cursor=pointer]:
+                - /url: /books/OL3561303M
+                - img [ref=e415]
+              - link [ref=e417] [cursor=pointer]:
+                - /url: /borrow/ia/jungleauthoritat00sinc?ref=ol
+                - text: Borrow
+            - option [ref=e418]:
+              - link [ref=e420] [cursor=pointer]:
+                - /url: /books/OL32772713M
+                - img [ref=e421]
+              - link [ref=e423] [cursor=pointer]:
+                - /url: /borrow/ia/isbn_0816130795?ref=ol
+                - text: Borrow
+            - option [ref=e424]:
+              - link [ref=e426] [cursor=pointer]:
+                - /url: /books/OL1736997M
+                - img [ref=e427]
+              - link [ref=e429] [cursor=pointer]:
+                - /url: /borrow/ia/yellowwallpaper0000gilm?ref=ol
+                - text: Borrow
+            - option [ref=e430]:
+              - link [ref=e432] [cursor=pointer]:
+                - /url: /books/OL28417093M
+                - img [ref=e433]
+              - link [ref=e435] [cursor=pointer]:
+                - /url: /borrow/ia/huckleberryfinna0000twai?ref=ol
+                - text: Borrow
+            - option [ref=e436]:
+              - link [ref=e438] [cursor=pointer]:
+                - /url: /books/OL24749029M
+                - img [ref=e439]
+              - link [ref=e441] [cursor=pointer]:
+                - /url: /borrow/ia/prideprejud00aust?ref=ol
+                - text: Borrow
+            - option [ref=e442]:
+              - link [ref=e444] [cursor=pointer]:
+                - /url: /books/OL7480344M
+                - img [ref=e445]
+              - link [ref=e447] [cursor=pointer]:
+                - /url: /borrow/ia/glassmenagerie0000will_r5t1?ref=ol
+                - text: Borrow
+            - option [ref=e448]:
+              - link [ref=e450] [cursor=pointer]:
+                - /url: /books/OL6226003M
+                - img [ref=e451]
+              - link [ref=e453] [cursor=pointer]:
+                - /url: /borrow/ia/magisterludi00hess?ref=ol
+                - text: Borrow
+            - option [ref=e454]:
+              - link [ref=e456] [cursor=pointer]:
+                - /url: /books/OL22990323M
+                - img [ref=e457]
+              - link [ref=e459] [cursor=pointer]:
+                - /url: /borrow/ia/watchmen00moor_0?ref=ol
+                - text: Borrow
+            - option [ref=e460]:
+              - link [ref=e462] [cursor=pointer]:
+                - /url: /books/OL36463535M
+                - img [ref=e463]
+              - link [ref=e465] [cursor=pointer]:
+                - /url: /borrow/ia/signoffour0000doyl_h1h3?ref=ol
+                - text: Borrow
+          - button "Next" [ref=e466] [cursor=pointer]
+      - generic [ref=e467]:
+        - heading "Recently Returned" [level=2] [ref=e469]:
+          - link "Recently Returned" [ref=e470] [cursor=pointer]:
+            - /url: https://archive.org/search.php?query=openlibrary_work%3A%28%2A%29+AND+collection%3A%28inlibrary%29+AND+%28lending___available_to_browse%3Atrue+OR+lending___available_to_borrow%3Atrue%29+AND++language%3Aeng+AND+%21collection%3A%28no-preview%29&sort=-lending___last_browse
+        - generic [ref=e472]:
+          - button "Previous" [disabled] [ref=e473] [cursor=pointer]
+          - listbox [ref=e475]:
+            - option "The new science of strong materials, or, Why you don't fall through the floor by James Edward Gordon Borrow" [ref=e476]:
+              - link "The new science of strong materials, or, Why you don't fall through the floor by James Edward Gordon" [ref=e478] [cursor=pointer]:
+                - /url: /books/OL3185795M
+                - img "The new science of strong materials, or, Why you don't fall through the floor by James Edward Gordon" [ref=e479]
+              - link "Borrow" [ref=e481] [cursor=pointer]:
+                - /url: /borrow/ia/newscienceofstro0000gord?ref=ol
+            - option "TAKING SIDES by Kate William Borrow" [ref=e482]:
+              - link "TAKING SIDES by Kate William" [ref=e484] [cursor=pointer]:
+                - /url: /books/OL7824056M
+                - img "TAKING SIDES by Kate William" [ref=e485]
+              - link "Borrow" [ref=e487] [cursor=pointer]:
+                - /url: /borrow/ia/takingsides000fran?ref=ol
+            - option "No Need for Heroes by Brian Keaney Borrow" [ref=e488]:
+              - link "No Need for Heroes by Brian Keaney" [ref=e490] [cursor=pointer]:
+                - /url: /books/OL10126814M
+                - img "No Need for Heroes by Brian Keaney" [ref=e491]
+              - link "Borrow" [ref=e493] [cursor=pointer]:
+                - /url: /borrow/ia/noneedforheroes0000kean?ref=ol
+            - option "Warcraft II, Battle.net edition by Prima Development Staff Borrow" [ref=e494]:
+              - link "Warcraft II, Battle.net edition by Prima Development Staff" [ref=e496] [cursor=pointer]:
+                - /url: /books/OL24223340M
+                - img "Warcraft II, Battle.net edition by Prima Development Staff" [ref=e497]
+              - link "Borrow" [ref=e499] [cursor=pointer]:
+                - /url: /borrow/ia/warcraftiibattle00rock?ref=ol
+            - option "Design and organization of computing structures by James H. Herzog Borrow" [ref=e500]:
+              - link "Design and organization of computing structures by James H. Herzog" [ref=e502] [cursor=pointer]:
+                - /url: /books/OL789237M
+                - img "Design and organization of computing structures by James H. Herzog" [ref=e503]
+              - link "Borrow" [ref=e505] [cursor=pointer]:
+                - /url: /borrow/ia/designorganizati0000herz?ref=ol
+            - option "The invasion of America by Francis Jennings Borrow" [ref=e506]:
+              - link "The invasion of America by Francis Jennings" [ref=e508] [cursor=pointer]:
+                - /url: /books/OL21380591M
+                - img "The invasion of America by Francis Jennings" [ref=e509]
+              - link "Borrow" [ref=e511] [cursor=pointer]:
+                - /url: /borrow/ia/invasionofameric0000jenn?ref=ol
+            - option [ref=e512]:
+              - link [ref=e514] [cursor=pointer]:
+                - /url: /books/OL1132567M
+                - img [ref=e515]
+              - link [ref=e517] [cursor=pointer]:
+                - /url: /borrow/ia/philosophyoflawc0000unse?ref=ol
+                - text: Borrow
+            - option [ref=e518]:
+              - link [ref=e520] [cursor=pointer]:
+                - /url: /books/OL9329095M
+                - img [ref=e521]
+              - link [ref=e523] [cursor=pointer]:
+                - /url: /books/OL9329095M/-/borrow?action=locate
+                - text: Locate
+            - option [ref=e524]:
+              - link [ref=e526] [cursor=pointer]:
+                - /url: /books/OL18707676M
+                - img [ref=e527]
+              - link [ref=e529] [cursor=pointer]:
+                - /url: /borrow/ia/bohemianfifthsauhenz?ref=ol
+                - text: Borrow
+            - option [ref=e530]:
+              - link [ref=e532] [cursor=pointer]:
+                - /url: /books/OL9599798M
+                - img [ref=e533]
+              - link [ref=e535] [cursor=pointer]:
+                - /url: /borrow/ia/seeingpatternrea0000mcwh?ref=ol
+                - text: Borrow
+            - option [ref=e536]:
+              - link [ref=e538] [cursor=pointer]:
+                - /url: /books/OL3828935M
+                - img [ref=e539]
+              - link [ref=e541] [cursor=pointer]:
+                - /url: /borrow/ia/femalewitswomenp00morg?ref=ol
+                - text: Borrow
+            - option [ref=e542]:
+              - link [ref=e544] [cursor=pointer]:
+                - /url: /books/OL378147M
+                - img [ref=e545]
+              - link [ref=e547] [cursor=pointer]:
+                - /url: /borrow/ia/historyoftriumph0000pere?ref=ol
+                - text: Borrow
+            - option [ref=e548]:
+              - link [ref=e550] [cursor=pointer]:
+                - /url: /books/OL694154M
+                - img [ref=e551]
+              - link [ref=e553] [cursor=pointer]:
+                - /url: /borrow/ia/harrisonfordimpe00jen_hfk?ref=ol
+                - text: Borrow
+            - option [ref=e554]:
+              - link [ref=e556] [cursor=pointer]:
+                - /url: /books/OL5757183M
+                - img [ref=e557]
+              - link [ref=e559] [cursor=pointer]:
+                - /url: /borrow/ia/hungaryinrevolut00ivnv?ref=ol
+                - text: Borrow
+            - option [ref=e560]:
+              - link [ref=e562] [cursor=pointer]:
+                - /url: /books/OL8128163M
+                - img [ref=e563]
+              - link [ref=e565] [cursor=pointer]:
+                - /url: /borrow/ia/swallowdalegodin00rans?ref=ol
+                - text: Borrow
+            - option [ref=e566]:
+              - link [ref=e568] [cursor=pointer]:
+                - /url: /books/OL4737978M
+                - img [ref=e569]
+              - link [ref=e571] [cursor=pointer]:
+                - /url: /borrow/ia/demonsanswerbook00sumr?ref=ol
+                - text: Borrow
+            - option [ref=e572]:
+              - link [ref=e574] [cursor=pointer]:
+                - /url: /books/OL22393430M
+                - img [ref=e575]
+              - link [ref=e577] [cursor=pointer]:
+                - /url: /borrow/ia/passengerimmigra0000unse_i0h3?ref=ol
+                - text: Borrow
+            - option [ref=e578]:
+              - link [ref=e580] [cursor=pointer]:
+                - /url: /books/OL27240103M
+                - img [ref=e581]
+              - link [ref=e583] [cursor=pointer]:
+                - /url: /borrow/ia/howtomakewish0000blak?ref=ol
+                - text: Borrow
+          - button "Next" [ref=e584] [cursor=pointer]
+      - figure "Loading carousel" [ref=e587]:
+        - img "Loading indicator" [ref=e588]
+        - generic [ref=e589]: Loading carousel
+      - figure "Loading carousel" [ref=e592]:
+        - img "Loading indicator" [ref=e593]
+        - generic [ref=e594]: Loading carousel
+      - figure "Loading carousel" [ref=e597]:
+        - img "Loading indicator" [ref=e598]
+        - generic [ref=e599]: Loading carousel
+      - figure "Loading carousel" [ref=e602]:
+        - img "Loading indicator" [ref=e603]
+        - generic [ref=e604]: Loading carousel
+      - figure "Loading carousel" [ref=e607]:
+        - img "Loading indicator" [ref=e608]
+        - generic [ref=e609]: Loading carousel
+      - generic [ref=e610]:
+        - heading "Browse by Subject" [level=2] [ref=e612]:
+          - link "Browse by Subject" [ref=e613] [cursor=pointer]:
+            - /url: /subjects
+        - generic [ref=e615]:
+          - button "Previous" [disabled] [ref=e616] [cursor=pointer]
+          - listbox [ref=e618]:
+            - option "Art 128,329 Books" [ref=e619]:
+              - link "Art 128,329 Books" [ref=e620] [cursor=pointer]:
+                - /url: /subjects/art#sort=date_published&ebooks=true
+                - paragraph [ref=e622]: Art
+                - paragraph [ref=e623]: 128,329 Books
+            - option "Science Fiction 20,939 Books" [ref=e624]:
+              - link "Science Fiction 20,939 Books" [ref=e625] [cursor=pointer]:
+                - /url: /subjects/science_fiction#sort=date_published&ebooks=true
+                - paragraph [ref=e627]: Science Fiction
+                - paragraph [ref=e628]: 20,939 Books
+            - option "Fantasy 14,290 Books" [ref=e629]:
+              - link "Fantasy 14,290 Books" [ref=e630] [cursor=pointer]:
+                - /url: /subjects/fantasy#sort=date_published&ebooks=true
+                - paragraph [ref=e632]: Fantasy
+                - paragraph [ref=e633]: 14,290 Books
+            - option "Biographies 26,402 Books" [ref=e634]:
+              - link "Biographies 26,402 Books" [ref=e635] [cursor=pointer]:
+                - /url: /subjects/biographies#sort=date_published&ebooks=true
+                - paragraph [ref=e637]: Biographies
+                - paragraph [ref=e638]: 26,402 Books
+            - option "Recipes 9,591 Books" [ref=e639]:
+              - link "Recipes 9,591 Books" [ref=e640] [cursor=pointer]:
+                - /url: /subjects/recipes#sort=date_published&ebooks=true
+                - paragraph [ref=e642]: Recipes
+                - paragraph [ref=e643]: 9,591 Books
+            - option "Romance 21,582 Books" [ref=e644]:
+              - link "Romance 21,582 Books" [ref=e645] [cursor=pointer]:
+                - /url: /subjects/romance#sort=date_published&ebooks=true
+                - paragraph [ref=e647]: Romance
+                - paragraph [ref=e648]: 21,582 Books
+            - option [ref=e649]:
+              - link [ref=e650] [cursor=pointer]:
+                - /url: /subjects/textbooks#sort=date_published&ebooks=true
+                - paragraph [ref=e652]: Textbooks
+                - paragraph [ref=e653]: 38,759 Books
+            - option [ref=e654]:
+              - link [ref=e655] [cursor=pointer]:
+                - /url: /subjects/children#sort=date_published&ebooks=true
+                - paragraph [ref=e657]: Children
+                - paragraph [ref=e658]: 58,978 Books
+            - option [ref=e659]:
+              - link [ref=e660] [cursor=pointer]:
+                - /url: /subjects/history#sort=date_published&ebooks=true
+                - paragraph [ref=e662]: History
+                - paragraph [ref=e663]: 2,439,996 Books
+            - option [ref=e664]:
+              - link [ref=e665] [cursor=pointer]:
+                - /url: /subjects/medicine#sort=date_published&ebooks=true
+                - paragraph [ref=e667]: Medicine
+                - paragraph [ref=e668]: 60,065 Books
+            - option [ref=e669]:
+              - link [ref=e670] [cursor=pointer]:
+                - /url: /subjects/religion#sort=date_published&ebooks=true
+                - paragraph [ref=e672]: Religion
+                - paragraph [ref=e673]: 164,741 Books
+            - option [ref=e674]:
+              - link [ref=e675] [cursor=pointer]:
+                - /url: /subjects/mystery_and_detective_stories#sort=date_published&ebooks=true
+                - paragraph [ref=e677]: Mystery and Detective Stories
+                - paragraph [ref=e678]: 16,083 Books
+            - option [ref=e679]:
+              - link [ref=e680] [cursor=pointer]:
+                - /url: /subjects/plays#sort=date_published&ebooks=true
+                - paragraph [ref=e682]: Plays
+                - paragraph [ref=e683]: 3,024 Books
+            - option [ref=e684]:
+              - link [ref=e685] [cursor=pointer]:
+                - /url: /subjects/music#sort=date_published&ebooks=true
+                - paragraph [ref=e687]: Music
+                - paragraph [ref=e688]: 87,972 Books
+            - option [ref=e689]:
+              - link [ref=e690] [cursor=pointer]:
+                - /url: /subjects/science#sort=date_published&ebooks=true
+                - paragraph [ref=e692]: Science
+                - paragraph [ref=e693]: 102,662 Books
+          - button "Next" [ref=e694] [cursor=pointer]
+      - generic [ref=e695]:
+        - generic [ref=e696]:
+          - heading "Around the Library" [level=2] [ref=e697]
+          - paragraph [ref=e698]:
+            - text: Here's what's happened over the last 28 days. More
+            - link "recent changes" [ref=e699] [cursor=pointer]:
+              - /url: /recentchanges
+            - text: .
+        - generic [ref=e700]:
+          - generic "See all visitors to OpenLibrary.org" [ref=e702] [cursor=pointer]:
+            - generic "Area graph of recent unique visitors" [ref=e703]
+            - link "18,799,813 Unique Visitors" [ref=e706]:
+              - /url: //archive.org/stats
+              - generic [ref=e707]: 18,799,813
+              - generic [ref=e708]: Unique Visitors
+          - generic "How many new Open Library members have we welcomed?" [ref=e710] [cursor=pointer]:
+            - generic "Area graph of new members" [ref=e711]
+            - link "129,645 New Members" [ref=e714]:
+              - /url: /stats
+              - generic [ref=e715]: 129,645
+              - generic [ref=e716]: New Members
+          - generic "People are constantly updating the catalog" [ref=e718] [cursor=pointer]:
+            - generic "Area graph of recent catalog edits" [ref=e719]
+            - link "3,199,773 Catalog Edits" [ref=e722]:
+              - /url: /recentchanges
+              - generic [ref=e723]: 3,199,773
+              - generic [ref=e724]: Catalog Edits
+          - generic "Members can create Lists" [ref=e726] [cursor=pointer]:
+            - generic "Area graph of lists created recently" [ref=e727]
+            - link "3,545 Lists Created" [ref=e730]:
+              - /url: /lists
+              - generic [ref=e731]: 3,545
+              - generic [ref=e732]: Lists Created
+          - generic "We're a library, so we lend books, too" [ref=e734] [cursor=pointer]:
+            - generic "Area graph of ebooks borrowed recently" [ref=e735]
+            - link "277,318 eBooks Borrowed" [ref=e738]:
+              - /url: /borrow
+              - generic [ref=e739]: 277,318
+              - generic [ref=e740]: eBooks Borrowed
+      - generic [ref=e741]:
+        - heading "About the Project" [level=2] [ref=e743]
+        - generic [ref=e744]:
+          - generic [ref=e745]:
+            - paragraph [ref=e746]:
+              - text: Open Library is an open, editable library catalog, building towards a web page for every book ever published.
+              - link "More" [ref=e747] [cursor=pointer]:
+                - /url: /about
+            - paragraph [ref=e748]:
+              - text: Just like Wikipedia, you can contribute new information or corrections to the catalog. You can browse by
+              - link "subjects" [ref=e749] [cursor=pointer]:
+                - /url: /subjects
+              - text: ","
+              - link "authors" [ref=e750] [cursor=pointer]:
+                - /url: /authors
+              - text: or
+              - link "lists" [ref=e751] [cursor=pointer]:
+                - /url: /lists
+              - text: members have created. If you love books, why not help build a library?
+          - generic [ref=e752]:
+            - heading "Latest Blog Posts" [level=3] [ref=e753]:
+              - link "Latest Blog Posts" [ref=e754] [cursor=pointer]:
+                - /url: https://blog.openlibrary.org/
+            - list [ref=e755]:
+              - listitem [ref=e756]:
+                - link "A Community-Curated Nancy Drew Collection" [ref=e757] [cursor=pointer]:
+                  - /url: https://blog.openlibrary.org/2026/01/30/a-community-curated-nancy-drew-collection/
+                - text: "-"
+                - emphasis [ref=e758]: January 30, 2026
+              - listitem [ref=e759]:
+                - link "Celebrating Our Community in 2025" [ref=e760] [cursor=pointer]:
+                  - /url: https://blog.openlibrary.org/2025/12/25/celebrating-our-community-in-2025/
+                - text: "-"
+                - emphasis [ref=e761]: December 25, 2025
+              - listitem [ref=e762]:
+                - link "Achieving More with Less" [ref=e763] [cursor=pointer]:
+                  - /url: https://blog.openlibrary.org/2025/12/06/achieving-more-with-less/
+                - text: "-"
+                - emphasis [ref=e764]: December 6, 2025
+  - contentinfo [ref=e766]:
+    - generic [ref=e767]:
+      - generic [ref=e768]:
+        - generic [ref=e769]:
+          - heading "Open Library" [level=2] [ref=e770]
+          - list [ref=e771]:
+            - listitem [ref=e772]:
+              - link "Vision" [ref=e773] [cursor=pointer]:
+                - /url: /about/vision
+            - listitem [ref=e774]:
+              - link "Volunteer" [ref=e775] [cursor=pointer]:
+                - /url: /volunteer
+            - listitem [ref=e776]:
+              - link "Partner With Us" [ref=e777] [cursor=pointer]:
+                - /url: /partner-with-us
+            - listitem [ref=e778]:
+              - link "Careers" [ref=e779] [cursor=pointer]:
+                - /url: https://archive.org/about/jobs.php
+            - listitem [ref=e780]:
+              - link "Blog" [ref=e781] [cursor=pointer]:
+                - /url: https://blog.openlibrary.org/
+            - listitem [ref=e782]:
+              - link "Terms of Service" [ref=e783] [cursor=pointer]:
+                - /url: https://archive.org/about/terms.php
+            - listitem [ref=e784]:
+              - link "Donate" [ref=e785] [cursor=pointer]:
+                - /url: https://archive.org/donate/?platform=ol&origin=olwww-TopNavDonateButton
+        - generic [ref=e786]:
+          - heading "Discover" [level=2] [ref=e787]
+          - list [ref=e788]:
+            - listitem [ref=e789]:
+              - link "Home" [ref=e790] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e791]:
+              - link "Books" [ref=e792] [cursor=pointer]:
+                - /url: /search
+            - listitem [ref=e793]:
+              - link "Authors" [ref=e794] [cursor=pointer]:
+                - /url: /search/authors
+            - listitem [ref=e795]:
+              - link "Subjects" [ref=e796] [cursor=pointer]:
+                - /url: /subjects
+            - listitem [ref=e797]:
+              - link "Collections" [ref=e798] [cursor=pointer]:
+                - /url: /collections
+            - listitem [ref=e799]:
+              - link "Advanced Search" [ref=e800] [cursor=pointer]:
+                - /url: /advancedsearch
+            - listitem [ref=e801]:
+              - link "Return to Top" [ref=e802] [cursor=pointer]:
+                - /url: "#top"
+        - generic [ref=e803]:
+          - heading "Develop" [level=2] [ref=e804]
+          - list [ref=e805]:
+            - listitem [ref=e806]:
+              - link "Developer Center" [ref=e807] [cursor=pointer]:
+                - /url: /developers
+            - listitem [ref=e808]:
+              - link "API Documentation" [ref=e809] [cursor=pointer]:
+                - /url: /developers/api
+            - listitem [ref=e810]:
+              - link "Bulk Data Dumps" [ref=e811] [cursor=pointer]:
+                - /url: /developers/dumps
+            - listitem [ref=e812]:
+              - link "Writing Bots" [ref=e813] [cursor=pointer]:
+                - /url: https://github.com/internetarchive/openlibrary/wiki/Writing-Bots
+        - generic [ref=e814]:
+          - heading "Help" [level=2] [ref=e815]
+          - list [ref=e816]:
+            - listitem [ref=e817]:
+              - link "Help Center" [ref=e818] [cursor=pointer]:
+                - /url: /help
+            - listitem [ref=e819]:
+              - link "Contact Us" [ref=e820] [cursor=pointer]:
+                - /url: mailto:openlibrary@archive.org?subject=Support Case
+            - listitem [ref=e821]:
+              - link "Suggesting Edits" [ref=e822] [cursor=pointer]:
+                - /url: /help/faq/editing
+            - listitem [ref=e823]:
+              - link "Add a Book" [ref=e824] [cursor=pointer]:
+                - /url: /books/add
+            - listitem [ref=e825]:
+              - link "Release Notes" [ref=e826] [cursor=pointer]:
+                - /url: https://github.com/internetarchive/openlibrary/releases
+          - complementary [ref=e827]:
+            - link "Bluesky" [ref=e828] [cursor=pointer]:
+              - /url: https://bsky.app/profile/openlibrary.org
+            - link "Twitter" [ref=e829] [cursor=pointer]:
+              - /url: https://twitter.com/OpenLibrary
+            - link "GitHub" [ref=e830] [cursor=pointer]:
+              - /url: https://github.com/internetarchive/openlibrary
+        - generic [ref=e831]:
+          - heading "Change Website Language" [level=2] [ref=e832]
+          - list [ref=e833]:
+            - listitem [ref=e834]:
+              - link "العربية (ar)" [ref=e835] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e836]:
+              - link "Čeština (cs)" [ref=e837] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e838]:
+              - link "Deutsch (de)" [ref=e839] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e840]:
+              - link "English (en)" [ref=e841] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e842]:
+              - link "Español (es)" [ref=e843] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e844]:
+              - link "Français (fr)" [ref=e845] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e846]:
+              - link "हिंदी (hi)" [ref=e847] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e848]:
+              - link "Hrvatski (hr)" [ref=e849] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e850]:
+              - link "Italiano (it)" [ref=e851] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e852]:
+              - link "Português (pt)" [ref=e853] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e854]:
+              - link "Română (ro)" [ref=e855] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e856]:
+              - link "Sardu (sc)" [ref=e857] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e858]:
+              - link "తెలుగు (te)" [ref=e859] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e860]:
+              - link "Українська (uk)" [ref=e861] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e862]:
+              - link "中文 (zh)" [ref=e863] [cursor=pointer]:
+                - /url: "#"
+      - separator [ref=e864]
+      - generic [ref=e865]:
+        - img "Open Library logo"
+        - generic [ref=e867]:
+          - text: Open Library is an initiative of the
+          - link "Internet Archive" [ref=e868] [cursor=pointer]:
+            - /url: //archive.org/
+          - text: ", a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in digital form. Other"
+          - link "projects" [ref=e869] [cursor=pointer]:
+            - /url: //archive.org/projects/
+          - text: include the
+          - link "Wayback Machine" [ref=e870] [cursor=pointer]:
+            - /url: //archive.org/web/
+          - text: ","
+          - link "archive.org" [ref=e871] [cursor=pointer]:
+            - /url: //archive.org/
+          - text: and
+          - link "archive-it.org" [ref=e872] [cursor=pointer]:
+            - /url: //archive-it.org
+        - generic [ref=e874]:
+          - text: version
+          - link "9f0cc79" [ref=e875] [cursor=pointer]:
+            - /url: https://github.com/internetarchive/openlibrary/commit/9f0cc79
+```
