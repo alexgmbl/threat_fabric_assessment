@@ -12,7 +12,10 @@ export class ResultsPage {
   }
 
   authorResult(authorName: string): Locator {
-    return this.page.getByRole('link', { name: new RegExp(authorName, 'i') }).first();
+    return this.page
+      .locator('a[href*="/authors/"]')
+      .filter({ hasText: new RegExp(authorName, 'i') })
+      .first();
   }
 
   async getResultsCount(): Promise<number> {

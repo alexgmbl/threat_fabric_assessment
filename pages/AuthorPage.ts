@@ -60,25 +60,27 @@ export class AuthorPage {
     await this.page.waitForLoadState('domcontentloaded');
 
     const title = await this.page.evaluate(() => {
-      const selectors = [
+      const workTitleSelectors = [
         '#author-works li .booktitle',
         '#works li .booktitle',
         '.work-list li .booktitle',
-        'a[itemprop="name"][href*="/works/"]',
-        'li.searchResultItem .booktitle',
         '#author-works li a[href*="/works/"]',
-        '#works li a[href*="/works/"]'
+        '#works li a[href*="/works/"]',
+        '.work-list li a[href*="/works/"]',
+        'a[itemprop="name"][href*="/works/"]'
       ];
 
-      for (const selector of selectors) {
-        const el = (globalThis as any).document.querySelector(selector) as any;
-        const text = el?.textContent?.trim();
-        if (text) {
-          return text;
-        }
-      }
+      const doc = (globalThis as any).document;
+      const allTitles = workTitleSelectors
+        .flatMap((selector) => Array.from(doc.querySelectorAll(selector) as any[]))
+        .map((el: any) => el.textContent?.trim() ?? '')
+        .filter(Boolean);
 
-      return '';
+      const firstNonCollection = allTitles.find(
+        (candidate) => !/\b(complete|collection|boxed set|books?\s*\d)/i.test(candidate)
+      );
+
+      return firstNonCollection ?? allTitles[0] ?? '';
     });
 
     return title;
