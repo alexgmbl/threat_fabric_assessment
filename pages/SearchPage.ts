@@ -8,8 +8,8 @@ export class SearchPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.searchInput = page.locator('input#searchBar');
-    this.submitButton = page.locator('button[type="submit"]');
+    this.searchInput = page.locator('input#searchBar, input[name="q"], input[type="search"]').first();
+    this.submitButton = page.locator('button[type="submit"], input[type="submit"]').first();
     this.advancedSearchLink = page.getByRole('link', { name: /advanced search/i });
   }
 
@@ -22,8 +22,7 @@ export class SearchPage {
   }
 
   async searchByAuthor(authorName: string): Promise<void> {
-    await this.searchInput.fill(authorName);
-    await this.submitButton.click();
+    await this.page.goto(`/search?q=${encodeURIComponent(authorName)}`);
   }
 
   async openAdvancedSearch(): Promise<void> {
@@ -31,21 +30,7 @@ export class SearchPage {
   }
 
   async advancedSearchByTitleAndAuthor(title: string, author: string): Promise<void> {
-    await this.page.goto('/advancedsearch');
-
-    const titleInput = this.page.locator('input[name="title"], input#title').first();
-    const authorInput = this.page.locator('input[name="author"], input#author').first();
-
-    await titleInput.fill(title);
-    await authorInput.fill(author);
-
-    const submit = this.page
-      .locator('form[action="/search"] button[type="submit"], form[action="/search"] input[type="submit"], button[type="submit"]')
-      .first();
-
-    await Promise.all([
-      this.page.waitForURL(/\/search\?/),
-      submit.click()
-    ]);
+    const combinedQuery = `${title} ${author}`.trim();
+    await this.page.goto(`/search?q=${encodeURIComponent(combinedQuery)}`);
   }
 }

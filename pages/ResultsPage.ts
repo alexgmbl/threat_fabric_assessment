@@ -7,8 +7,8 @@ export class ResultsPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.resultRows = page.locator('li.searchResultItem, .searchResults li, .search-results li').filter({ has: page.locator('a') });
-    this.resultTitles = page.locator('li.searchResultItem .booktitle, .searchResults .booktitle, .search-results .booktitle');
+    this.resultRows = page.locator('li.searchResultItem, .searchResults li, .search-results li, .results li').filter({ has: page.locator('a') });
+    this.resultTitles = page.locator('.searchResultItem .booktitle, .searchResults .booktitle, .search-results .booktitle, .results .booktitle, h3.booktitle');
   }
 
   authorResult(authorName: string): Locator {
@@ -18,8 +18,11 @@ export class ResultsPage {
   async getResultsCount(): Promise<number> {
     await this.page.waitForLoadState('domcontentloaded');
     await this.page.waitForURL(/\/search\?/);
-    await this.page.waitForTimeout(500);
-    return this.resultRows.count();
+
+    const rowCount = await this.resultRows.count();
+    const titleCount = await this.resultTitles.count();
+
+    return Math.max(rowCount, titleCount);
   }
 
   async openAuthorProfile(authorName: string): Promise<void> {
