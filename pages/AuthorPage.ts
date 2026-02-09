@@ -1,55 +1,47 @@
-import { Locator, Page } from '@playwright/test';
+import { expect, Locator, Page } from '@playwright/test';
 
 export class AuthorPage {
   readonly page: Page;
   readonly authorNameHeading: Locator;
-  readonly worksSection: Locator;
   readonly ratingSortSelect: Locator;
-  readonly worksListItems: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.authorNameHeading = page.locator('h1');
-    this.worksSection = page.locator('#author-works');
+    // Using a more specific selector for the heading if possible
+    this.authorNameHeading = page.locator('h1'); 
     this.ratingSortSelect = page.locator('select#sort, select[name="sort"]');
-    this.worksListItems = page.locator('#author-works li, .work-list li');
   }
 
   async goto(authorKey: string): Promise<void> {
     await this.page.goto(`/authors/${authorKey}`);
+    // Wait for the heading to be visible to ensure page load
+    await expect(this.authorNameHeading).toBeVisible();
   }
 
   async getAuthorName(): Promise<string> {
-    const name = await this.authorNameHeading.first().textContent();
-    return name?.trim() ?? '';
+    return (await this.authorNameHeading.innerText()).trim();
   }
 
-  async sortWorksByRating(): Promise<void> {
-    if (await this.ratingSortSelect.count()) {
-      const select = this.ratingSortSelect.first();
-      const optionValue = await select.evaluate((el) => {
-        const options: any[] = Array.from((el as any).options ?? []);
-        const ratingOption: any = options.find((opt: any) => /rating/i.test(String(opt.label)) || /rating/i.test(String(opt.value)));
-        return ratingOption?.value ?? null;
-      });
+ async sortWorksByRating(): Promise<void> {
+  // 1. Open the dropdown
+  const dropdown = this.page.locator('summary').filter({ hasText: /Most Editions|Sort/i });
+  await dropdown.click();
 
-      if (optionValue) {
-        await select.selectOption(optionValue);
-        await this.page.waitForLoadState('networkidle');
-        return;
-      }
-    }
+  // 2. Click the 'Top Rated' link
+  const ratingLink = this.page.getByRole('link', { name: /top rated/i });
+  
+  // Ensure the link is visible before clicking (the dropdown animation might take a millisecond)
+  await expect(ratingLink).toBeVisible();
+  await ratingLink.click();
 
-    const ratingSortLink = this.page.getByRole('link', { name: /rating/i }).first();
-    if (await ratingSortLink.count()) {
-      await ratingSortLink.click();
-      await this.page.waitForLoadState('networkidle');
-    }
-  }
+  // 3. Validation
+  await expect(this.page).toHaveURL(/sort=rating/);
+ }
 
   async getTopRatedWorkTitle(): Promise<string> {
-    const topWork = this.page.locator('#author-works li .booktitle, .work-list li .booktitle, #author-works li a').first();
-    const title = await topWork.textContent();
-    return title?.trim() ?? '';
+    const topWorkTitle = this.page.locator('.booktitle .results').first();
+
+    await expect(topWorkTitle).toBeVisible();
+    return (await topWorkTitle.textContent())?.trim() ?? '';
   }
 }
