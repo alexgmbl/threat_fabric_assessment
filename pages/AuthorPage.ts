@@ -52,7 +52,7 @@ export class AuthorPage {
     const url = new URL(this.page.url());
     if (url.pathname.includes('/authors/')) {
       url.searchParams.set('sort', 'rating');
-      await this.page.goto(url.toString());
+      await this.page.goto(url.toString(), { waitUntil: 'domcontentloaded' });
     }
   }
 
