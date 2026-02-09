@@ -12,7 +12,24 @@ export class ResultsPage {
   }
 
   authorResult(authorName: string): Locator {
-    return this.page.getByRole('link', { name: new RegExp(authorName, 'i') }).first();
+    return this.page
+      .locator('a[href*="/authors/"]')
+      .filter({ hasText: new RegExp(authorName, 'i') })
+      .first();
+  }
+
+  async getResultsCount(): Promise<number> {
+    await this.page.waitForLoadState('domcontentloaded');
+    await this.page.waitForURL(/\/search\?/);
+
+    const rowCount = await this.resultRows.count();
+    const titleCount = await this.resultTitles.count();
+
+    return Math.max(rowCount, titleCount);
+  }
+
+  async openAuthorProfile(authorName: string): Promise<void> {
+    await this.openAuthor(authorName);
   }
 
   async getResultsCount(): Promise<number> {

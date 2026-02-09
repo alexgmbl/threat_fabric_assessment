@@ -2,8 +2,7 @@ import { test, expect } from '@playwright/test';
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
-import { AuthorApi } from '../../api/AuthorApi.js'; 
-import path from 'path';
+import { AuthorApi } from '../../api/AuthorApi';
 
 type AuthorData = { name: string; key: string };
 

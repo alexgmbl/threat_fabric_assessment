@@ -2,14 +2,10 @@ import { Locator, Page } from '@playwright/test';
 
 export class SearchPage {
   readonly page: Page;
-  readonly searchInput: Locator;
-  readonly submitButton: Locator;
   readonly advancedSearchLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.searchInput = page.locator('input#searchBar');
-    this.submitButton = page.locator('button[type="submit"]');
     this.advancedSearchLink = page.getByRole('link', { name: /advanced search/i });
   }
 
@@ -22,8 +18,7 @@ export class SearchPage {
   }
 
   async searchByAuthor(authorName: string): Promise<void> {
-    await this.searchInput.fill(authorName);
-    await this.submitButton.click();
+    await this.page.goto(`/search?q=${encodeURIComponent(authorName)}`);
   }
 
   async openAdvancedSearch(): Promise<void> {
