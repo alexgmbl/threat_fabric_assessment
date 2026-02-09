@@ -7,8 +7,8 @@ export class ResultsPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.resultRows = page.locator('.searchResults li.searchResultItem');
-    this.resultTitles = page.locator('.searchResults li.searchResultItem .booktitle');
+    this.resultRows = page.locator('li.searchResultItem, .searchResults li, .search-results li').filter({ has: page.locator('a') });
+    this.resultTitles = page.locator('li.searchResultItem .booktitle, .searchResults .booktitle, .search-results .booktitle');
   }
 
   authorResult(authorName: string): Locator {
@@ -17,7 +17,8 @@ export class ResultsPage {
 
   async getResultsCount(): Promise<number> {
     await this.page.waitForLoadState('domcontentloaded');
-    await this.resultRows.first().waitFor({ state: 'visible', timeout: 10000 });
+    await this.page.waitForURL(/\/search\?/);
+    await this.page.waitForTimeout(500);
     return this.resultRows.count();
   }
 

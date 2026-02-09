@@ -31,6 +31,21 @@ export class SearchPage {
   }
 
   async advancedSearchByTitleAndAuthor(title: string, author: string): Promise<void> {
-    await this.page.goto(`/search?title=${encodeURIComponent(title)}&author=${encodeURIComponent(author)}`);
+    await this.page.goto('/advancedsearch');
+
+    const titleInput = this.page.locator('input[name="title"], input#title').first();
+    const authorInput = this.page.locator('input[name="author"], input#author').first();
+
+    await titleInput.fill(title);
+    await authorInput.fill(author);
+
+    const submit = this.page
+      .locator('form[action="/search"] button[type="submit"], form[action="/search"] input[type="submit"], button[type="submit"]')
+      .first();
+
+    await Promise.all([
+      this.page.waitForURL(/\/search\?/),
+      submit.click()
+    ]);
   }
 }
