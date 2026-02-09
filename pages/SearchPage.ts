@@ -17,6 +17,10 @@ export class SearchPage {
     await this.page.goto('/');
   }
 
+  async gotoHome(): Promise<void> {
+    await this.goto();
+  }
+
   async searchByAuthor(authorName: string): Promise<void> {
     await this.searchInput.fill(authorName);
     await this.submitButton.click();
@@ -24,5 +28,9 @@ export class SearchPage {
 
   async openAdvancedSearch(): Promise<void> {
     await this.advancedSearchLink.click();
+  }
+
+  async advancedSearchByTitleAndAuthor(title: string, author: string): Promise<void> {
+    await this.page.goto(`/search?title=${encodeURIComponent(title)}&author=${encodeURIComponent(author)}`);
   }
 }
