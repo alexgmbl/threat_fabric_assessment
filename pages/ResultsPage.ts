@@ -7,13 +7,17 @@ export class ResultsPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.resultRows = page.locator('.searchResults li.searchResultItem, li.searchResultItem, [data-ol-search-result]');
-    this.resultTitles = page.locator('.searchResults li.searchResultItem .booktitle, li.searchResultItem .booktitle, [data-ol-search-result] .booktitle');
+    this.resultRows = page.locator(
+      'main [data-ol-search-result], main li.searchResultItem, main li[class*="searchResult"], main li:has(a[href*="/works/"])'
+    );
+    this.resultTitles = page.locator(
+      'main [data-ol-search-result] .booktitle, main li.searchResultItem .booktitle, main a[href*="/works/"]'
+    );
   }
 
   authorResult(authorName: string): Locator {
     return this.page
-      .locator('a[href*="/authors/"]')
+      .locator('main a[href*="/authors/"]')
       .filter({ hasText: new RegExp(authorName, 'i') })
       .first();
   }
@@ -21,6 +25,7 @@ export class ResultsPage {
   async getResultsCount(): Promise<number> {
     await this.page.waitForURL(/\/search(\?|\/)/);
     await this.page.waitForLoadState('domcontentloaded');
+    await this.resultRows.first().waitFor({ state: 'visible', timeout: 10_000 }).catch(() => undefined);
 
     const rowCount = await this.resultRows.count();
     const titleCount = await this.resultTitles.count();

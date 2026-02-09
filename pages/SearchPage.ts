@@ -57,7 +57,7 @@ export class SearchPage {
     await titleInput.fill(title);
     await authorInput.fill(author);
 
-    const submitButton = this.page.getByRole('button', { name: /search/i }).first();
+    const submitButton = this.page.locator('xpath=//*[@id="contentBody"]/form/button').first();
     await submitButton.click();
     await this.page.waitForURL(/\/search(\?|\/)/);
   }
