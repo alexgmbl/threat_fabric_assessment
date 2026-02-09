@@ -6,6 +6,7 @@ export class AuthorPage {
   readonly worksSection: Locator;
   readonly ratingSortSelect: Locator;
   readonly worksListItems: Locator;
+  readonly topRatedWorkTitle: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -13,6 +14,7 @@ export class AuthorPage {
     this.worksSection = page.locator('#author-works, .work-list, .authorAllBooks, main');
     this.ratingSortSelect = page.locator('select#sort, select[name="sort"]');
     this.worksListItems = page.locator('#author-works li, .work-list li, .authorAllBooks li, main ol > li');
+    this.topRatedWorkTitle = page.locator('#author-works a[href*="/works/"], .work-list a[href*="/works/"], .authorAllBooks a[href*="/works/"], main a[href*="/works/"]').first();
   }
 
   async goto(authorKey: string): Promise<void> {
@@ -54,9 +56,8 @@ export class AuthorPage {
   }
 
   async getTopRatedWorkTitle(): Promise<string> {
-    const topWork = this.page.locator('#author-works a[href*="/works/"], .work-list a[href*="/works/"], .authorAllBooks a[href*="/works/"], main a[href*="/works/"]').first();
-    await topWork.waitFor({ state: 'visible', timeout: 15000 });
-    const title = await topWork.textContent();
+    await this.topRatedWorkTitle.waitFor({ state: 'visible', timeout: 15000 });
+    const title = await this.topRatedWorkTitle.textContent();
     return title?.trim() ?? '';
   }
 }

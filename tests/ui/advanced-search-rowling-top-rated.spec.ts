@@ -21,6 +21,5 @@ test('advanced search for Harry Potter by Rowling shows expected top-rated book 
 
   await authorPage.sortWorksByRating();
 
-  const topRatedBook = await authorPage.getTopRatedWorkTitle();
-  expect(topRatedBook).toBe('Harry Potter and the Half-Blood Prince');
+  await expect(authorPage.topRatedWorkTitle).toHaveText('Harry Potter and the Half-Blood Prince');
 });
