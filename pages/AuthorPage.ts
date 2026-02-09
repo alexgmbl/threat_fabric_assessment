@@ -3,16 +3,12 @@ import { Locator, Page } from '@playwright/test';
 export class AuthorPage {
   readonly page: Page;
   readonly authorNameHeading: Locator;
-  readonly worksSection: Locator;
   readonly ratingSortSelect: Locator;
-  readonly worksListItems: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.authorNameHeading = page.locator('h1:visible, h2:visible').first();
-    this.worksSection = page.locator('#author-works, #works, .work-list, .searchResults, .search-results').first();
     this.ratingSortSelect = page.locator('select#sort, select[name="sort"], select[name="sortBy"]').first();
-    this.worksListItems = page.locator('#author-works li, #works li, .work-list li, .searchResults li.searchResultItem');
   }
 
   async goto(authorKey: string): Promise<void> {
