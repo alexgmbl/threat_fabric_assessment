@@ -26,7 +26,6 @@ export class SearchPage {
   }
 
   async advancedSearchByTitleAndAuthor(title: string, author: string): Promise<void> {
-    const combinedQuery = `${title} ${author}`.trim();
-    await this.page.goto(`/search?q=${encodeURIComponent(combinedQuery)}`);
+    await this.page.goto(`/search?q=${encodeURIComponent(title)}&author=${encodeURIComponent(author)}&mode=advanced`);
   }
 }

@@ -3,12 +3,16 @@ import { Locator, Page } from '@playwright/test';
 export class AuthorPage {
   readonly page: Page;
   readonly authorNameHeading: Locator;
+  readonly worksSection: Locator;
   readonly ratingSortSelect: Locator;
+  readonly worksListItems: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.authorNameHeading = page.locator('h1:visible, h2:visible').first();
-    this.ratingSortSelect = page.locator('select#sort, select[name="sort"], select[name="sortBy"]').first();
+    this.authorNameHeading = page.locator('h1');
+    this.worksSection = page.locator('#author-works');
+    this.ratingSortSelect = page.locator('select#sort, select[name="sort"]');
+    this.worksListItems = page.locator('#author-works li, .work-list li');
   }
 
   async goto(authorKey: string): Promise<void> {
@@ -16,13 +20,13 @@ export class AuthorPage {
   }
 
   async getAuthorName(): Promise<string> {
-    const name = await this.authorNameHeading.textContent();
+    const name = await this.authorNameHeading.first().textContent();
     return name?.trim() ?? '';
   }
 
   async sortWorksByRating(): Promise<void> {
     if (await this.ratingSortSelect.count()) {
-      const select = this.ratingSortSelect;
+      const select = this.ratingSortSelect.first();
       const optionValue = await select.evaluate((el) => {
         const options: any[] = Array.from((el as any).options ?? []);
         const ratingOption: any = options.find((opt: any) => /rating/i.test(String(opt.label)) || /rating/i.test(String(opt.value)));
@@ -31,54 +35,21 @@ export class AuthorPage {
 
       if (optionValue) {
         await select.selectOption(optionValue);
-        await this.page.waitForLoadState('domcontentloaded');
+        await this.page.waitForLoadState('networkidle');
         return;
       }
     }
 
     const ratingSortLink = this.page.getByRole('link', { name: /rating/i }).first();
     if (await ratingSortLink.count()) {
-      await Promise.all([
-        this.page.waitForLoadState('domcontentloaded'),
-        ratingSortLink.click()
-      ]);
-      return;
-    }
-
-    const url = new URL(this.page.url());
-    if (url.pathname.includes('/authors/')) {
-      url.searchParams.set('sort', 'rating');
-      await this.page.goto(url.toString(), { waitUntil: 'domcontentloaded' });
+      await ratingSortLink.click();
+      await this.page.waitForLoadState('networkidle');
     }
   }
 
   async getTopRatedWorkTitle(): Promise<string> {
-    await this.page.waitForLoadState('domcontentloaded');
-
-    const title = await this.page.evaluate(() => {
-      const workTitleSelectors = [
-        '#author-works li .booktitle',
-        '#works li .booktitle',
-        '.work-list li .booktitle',
-        '#author-works li a[href*="/works/"]',
-        '#works li a[href*="/works/"]',
-        '.work-list li a[href*="/works/"]',
-        'a[itemprop="name"][href*="/works/"]'
-      ];
-
-      const doc = (globalThis as any).document;
-      const allTitles = workTitleSelectors
-        .flatMap((selector) => Array.from(doc.querySelectorAll(selector) as any[]))
-        .map((el: any) => el.textContent?.trim() ?? '')
-        .filter(Boolean);
-
-      const firstNonCollection = allTitles.find(
-        (candidate) => !/\b(complete|collection|boxed set|books?\s*\d)/i.test(candidate)
-      );
-
-      return firstNonCollection ?? allTitles[0] ?? '';
-    });
-
-    return title;
+    const topWork = this.page.locator('#author-works li .booktitle, .work-list li .booktitle, #author-works li a').first();
+    const title = await topWork.textContent();
+    return title?.trim() ?? '';
   }
 }
