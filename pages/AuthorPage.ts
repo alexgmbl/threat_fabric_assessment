@@ -10,9 +10,9 @@ export class AuthorPage {
   constructor(page: Page) {
     this.page = page;
     this.authorNameHeading = page.locator('h1');
-    this.worksSection = page.locator('#author-works');
+    this.worksSection = page.locator('#author-works, .work-list, .authorAllBooks, main');
     this.ratingSortSelect = page.locator('select#sort, select[name="sort"]');
-    this.worksListItems = page.locator('#author-works li, .work-list li');
+    this.worksListItems = page.locator('#author-works li, .work-list li, .authorAllBooks li, main ol > li');
   }
 
   async goto(authorKey: string): Promise<void> {
@@ -44,11 +44,18 @@ export class AuthorPage {
     if (await ratingSortLink.count()) {
       await ratingSortLink.click();
       await this.page.waitForLoadState('networkidle');
+      return;
     }
+
+    const current = new URL(this.page.url());
+    current.searchParams.set('sort', 'rating');
+    await this.page.goto(current.toString());
+    await this.page.waitForLoadState('networkidle');
   }
 
   async getTopRatedWorkTitle(): Promise<string> {
-    const topWork = this.page.locator('#author-works li .booktitle, .work-list li .booktitle, #author-works li a').first();
+    const topWork = this.page.locator('#author-works a[href*="/works/"], .work-list a[href*="/works/"], .authorAllBooks a[href*="/works/"], main a[href*="/works/"]').first();
+    await topWork.waitFor({ state: 'visible', timeout: 15000 });
     const title = await topWork.textContent();
     return title?.trim() ?? '';
   }
