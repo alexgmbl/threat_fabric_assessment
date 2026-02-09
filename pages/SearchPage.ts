@@ -19,13 +19,18 @@ export class SearchPage {
 
   async searchByAuthor(authorName: string): Promise<void> {
     await this.page.goto(`/search?q=${encodeURIComponent(authorName)}`);
+    await this.page.waitForURL(/\/search(\?|\/)/);
+    await this.page.waitForLoadState('domcontentloaded');
   }
 
   async openAdvancedSearch(): Promise<void> {
-    await this.advancedSearchLink.click();
+    await this.page.goto('/advancedsearch');
+    await this.page.waitForURL(/\/advancedsearch/);
   }
 
   async advancedSearchByTitleAndAuthor(title: string, author: string): Promise<void> {
     await this.page.goto(`/search?q=${encodeURIComponent(title)}&author=${encodeURIComponent(author)}&mode=advanced`);
+    await this.page.waitForURL(/\/search(\?|\/)/);
+    await this.page.waitForLoadState('domcontentloaded');
   }
 }
