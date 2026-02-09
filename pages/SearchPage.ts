@@ -44,7 +44,8 @@ export class SearchPage {
   }
 
   async openAdvancedSearch(): Promise<void> {
-    await this.advancedSearchLink.click();
+    await this.page.goto('/advancedsearch');
+    await this.page.waitForURL(/\/advancedsearch/);
   }
 
   async advancedSearchByTitleAndAuthor(title: string, author: string): Promise<void> {
