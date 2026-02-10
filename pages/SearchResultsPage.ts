@@ -4,7 +4,6 @@ export class SearchResultsPage {
   readonly page: Page;
   readonly resultsHeading: Locator;
   readonly resultItems: Locator;
-  readonly resultTitles: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -13,9 +12,6 @@ export class SearchResultsPage {
       .locator('li.searchResultItem')
       .or(page.locator('[data-ol-search-result]'))
       .or(page.locator('main li:has(a[href*="/works/"])'));
-    this.resultTitles = page.locator(
-      'li.searchResultItem .booktitle, [data-ol-search-result] .booktitle, li.searchResultItem a[href*="/works/"], [data-ol-search-result] a[href*="/works/"]'
-    );
   }
 
   async waitForResults(): Promise<void> {
@@ -40,7 +36,31 @@ export class SearchResultsPage {
 
   async getTitleOfResult(index: number): Promise<string> {
     await this.waitForResults();
-    const title = await this.resultTitles.nth(index).innerText();
-    return title.trim();
+
+    const resultItem = this.resultItems.nth(index);
+    await expect(resultItem).toBeVisible();
+
+    const directTitle = resultItem.locator('.booktitle').first();
+    if (await directTitle.count()) {
+      const directText = (await directTitle.innerText()).trim();
+      if (directText) {
+        return directText;
+      }
+    }
+
+    const workLink = resultItem.locator('a[href*="/works/"]').first();
+    if (await workLink.count()) {
+      const workTitle = (await workLink.innerText()).trim();
+      if (workTitle) {
+        return workTitle;
+      }
+    }
+
+    const anyLink = resultItem.getByRole('link').first();
+    if (await anyLink.count()) {
+      return (await anyLink.innerText()).trim();
+    }
+
+    return (await resultItem.innerText()).trim();
   }
 }
