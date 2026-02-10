@@ -40,24 +40,15 @@ export class AuthorPage {
   await expect(this.page).toHaveURL(/sort=rating/);
  }
 
-  async getTopRatedWorkTitle(): Promise<string> {
-    // After sorting by rating, Open Library can place non-book collection/pool entries first.
-    // We filter to the first tile that has a preview CTA group, which indicates a book item.
-    const workCount = await this.workTiles.count();
+  async getTopRatedBookTitle(): Promise<string> {
+  const items = this.page.locator('li.searchResultItem');
 
-    for (let i = 0; i < workCount; i += 1) {
-      const workTile = this.workTiles.nth(i);
-      const previewCtaGroup = workTile.locator('div.cta-button-group').filter({
-        has: workTile.locator('a.cta-btn--preview'),
-      });
+  const firstBook = items
+    .filter({ hasNot: this.page.locator('a.results', { hasText: 'Collection' }) })
+    .filter({ hasNot: this.page.locator('a.results', { hasText: '(series)' }) })
+    .first();
 
-      if ((await previewCtaGroup.count()) > 0) {
-        const topWorkTitle = workTile.locator('.booktitle .results, .booktitle a').first();
-        await expect(topWorkTitle).toBeVisible();
-        return (await topWorkTitle.textContent())?.trim() ?? '';
-      }
-    }
+  return (await firstBook.locator('a.results').innerText()).trim();
+}
 
-    throw new Error('No rated book entry with preview CTA was found in the works list.');
-  }
 }
