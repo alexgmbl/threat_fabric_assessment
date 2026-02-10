@@ -4,12 +4,14 @@ export class AuthorPage {
   readonly page: Page;
   readonly authorNameHeading: Locator;
   readonly ratingSortSelect: Locator;
+  readonly workTiles: Locator;
 
   constructor(page: Page) {
     this.page = page;
     // Using a more specific selector for the heading if possible
     this.authorNameHeading = page.locator('h1'); 
     this.ratingSortSelect = page.locator('select#sort, select[name="sort"]');
+    this.workTiles = page.locator('main li:has(a[href*="/works/"])');
   }
 
   async goto(authorKey: string): Promise<void> {
@@ -39,9 +41,23 @@ export class AuthorPage {
  }
 
   async getTopRatedWorkTitle(): Promise<string> {
-    const topWorkTitle = this.page.locator('.booktitle .results').first();
+    // After sorting by rating, Open Library can place non-book collection/pool entries first.
+    // We filter to the first tile that has a preview CTA group, which indicates a book item.
+    const workCount = await this.workTiles.count();
 
-    await expect(topWorkTitle).toBeVisible();
-    return (await topWorkTitle.textContent())?.trim() ?? '';
+    for (let i = 0; i < workCount; i += 1) {
+      const workTile = this.workTiles.nth(i);
+      const previewCtaGroup = workTile.locator('div.cta-button-group').filter({
+        has: workTile.locator('a.cta-btn--preview'),
+      });
+
+      if ((await previewCtaGroup.count()) > 0) {
+        const topWorkTitle = workTile.locator('.booktitle .results, .booktitle a').first();
+        await expect(topWorkTitle).toBeVisible();
+        return (await topWorkTitle.textContent())?.trim() ?? '';
+      }
+    }
+
+    throw new Error('No rated book entry with preview CTA was found in the works list.');
   }
 }
