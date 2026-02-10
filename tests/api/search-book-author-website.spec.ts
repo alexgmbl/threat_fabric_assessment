@@ -40,12 +40,15 @@ test.describe('Open Library search to author website validation', () => {
       const authorData = await authorDetails.json();
       expect(authorData.links?.length, 'Expected author details to include at least one website link').toBeGreaterThan(0);
 
-      const firstWebsiteUrl = authorData.links?.[0]?.url;
+      /* const firstWebsiteUrl = authorData.links?.[0]?.url;
       expect(firstWebsiteUrl, 'Expected first author link URL to exist').toBeTruthy();
-      expect(firstWebsiteUrl).toMatch(/^https?:\/\//i);
+      expect(firstWebsiteUrl).toMatch(/^https?:\/\//i); 
 
       const parsedUrl = new URL(firstWebsiteUrl as string);
-      expect(parsedUrl.hostname.length).toBeGreaterThan(0);
+      expect(parsedUrl.hostname.length).toBeGreaterThan(0);*/
+      const links = authorData.links ?? [];
+      const websiteUrls = links.map(l => l.url?.toLowerCase()).filter(Boolean);
+      expect(websiteUrls.some(url => url.includes('jkrowling.com')),).toBe(true);
     });
   }
 });

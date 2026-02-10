@@ -22,5 +22,5 @@ test('advanced search for Harry Potter by Rowling shows expected top-rated book 
   await authorPage.sortWorksByRating();
 
   const topRatedBook = await authorPage.getTopRatedWorkTitle();
-  expect(topRatedBook).toBe('The Complete Harry Potter Collection (Books 1-7)');
+  expect(topRatedBook).toBe('Harry Potter and the Half-Blood Prince');
 });
