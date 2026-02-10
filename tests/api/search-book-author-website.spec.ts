@@ -17,9 +17,9 @@ type BookAuthorCase = {
 const testDataPath = path.resolve(__dirname, '../../test-data/book-search-authors.json');
 const cases: BookAuthorCase[] = JSON.parse(readFileSync(testDataPath, 'utf-8'));
 
-test.describe('Open Library search to author website validation', () => {
+test.describe('Author website validation', () => {
   for (const scenario of cases) {
-    test(`searches by title and author, then validates author website URL: ${scenario.title} / ${scenario.author}`, async ({ request }) => {
+    test(` ${scenario.title} / ${scenario.author}`, async ({ request }) => {
       const searchApi = new SearchApi(request);
       const authorApi = new AuthorApi(request);
 

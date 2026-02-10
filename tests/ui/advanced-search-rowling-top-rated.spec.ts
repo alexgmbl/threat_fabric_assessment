@@ -3,7 +3,7 @@ import { SearchPage } from '../../pages/SearchPage';
 import { ResultsPage } from '../../pages/ResultsPage';
 import { AuthorPage } from '../../pages/AuthorPage';
 
-test('advanced search for Harry Potter by Rowling shows expected top-rated book on author page', async ({ page }) => {
+test('advanced search for Harry Potter by Rowling & top-rated book', async ({ page }) => {
   const searchPage = new SearchPage(page);
   const resultsPage = new ResultsPage(page);
   const authorPage = new AuthorPage(page);
