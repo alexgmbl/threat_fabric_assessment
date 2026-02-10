@@ -39,7 +39,13 @@ export class AuthorPage {
  }
 
   async getTopRatedWorkTitle(): Promise<string> {
-    const topWorkTitle = this.page.locator('.booktitle .results').first();
+    // Sorting by rating can show non-book entries first; using the first visible "Preview" link
+    // targets the first real book item in the ranked list.
+    const firstPreviewLink = this.page.getByRole('link', { name: 'Preview' }).first();
+    await expect(firstPreviewLink).toBeVisible();
+
+    const previewWorkTile = firstPreviewLink.locator('xpath=ancestor::li[1]');
+    const topWorkTitle = previewWorkTile.locator('.booktitle .results, .booktitle a').first();
 
     await expect(topWorkTitle).toBeVisible();
     return (await topWorkTitle.textContent())?.trim() ?? '';
