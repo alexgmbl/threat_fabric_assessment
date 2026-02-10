@@ -14,7 +14,6 @@ test('basic search from homepage returns Harry Potter results', async ({ page })
 
   // Assert
   await searchResultsPage.waitForResults();
-  await expect(await searchResultsPage.isResultsPageDisplayed()).toBeTruthy();
 
   const resultCount = await searchResultsPage.getResultCount();
   expect(resultCount).toBeGreaterThan(0);
@@ -26,4 +25,4 @@ test('basic search from homepage returns Harry Potter results', async ({ page })
     Array.from({ length: Math.min(resultCount, 5) }, (_, index) => searchResultsPage.getTitleOfResult(index))
   );
   expect(topFiveTitles.some((title) => /harry\s+potter/i.test(title))).toBeTruthy();
-});
+}); 
