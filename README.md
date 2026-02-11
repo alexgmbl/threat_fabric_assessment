@@ -67,7 +67,7 @@ Install Playwright Browser
 npx playwright install
 ```
 
-## Run Tests
+## 5. Run Tests
 
 ```bash
 npm run test:ui
@@ -82,7 +82,7 @@ Playwright generates HTML reports in `playwright-report/`.
 npx playwright show-report
 ```
 
-## 6. Implemented Scenarios
+## 7. Implemented Scenarios
 API Scenarios:
 
   - Search book by title and author
